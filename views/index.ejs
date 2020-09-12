@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Your To Do List</h1>
+    <div class="listItemDisplay">
+        <%listItems.forEach(function(item){%>
+            <form action="/delete" method="post">
+            <div class="item">
+              <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+              <p><%=  item.name  %></p>
+              <p><%= item.description %></p>
+            </div>
+            </form>
+          <%})%>
+          <form class="item" action="/" method="post">
+            <input type="text" name="newItemName" placeholder="New Item Name" autocomplete="off">
+            <input type="text" name="newItemDescription" placeholder="New Item Description" autocomplete="off">
+            <button type="submit">+</button>
+          </form>
+    </div>
+</body>
+<footer>
+    Copyright © Vijay Joshi <%= new Date().getFullYear();%> All Rights Reserved
+</footer>
+</html>
